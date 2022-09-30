@@ -58,7 +58,18 @@ async function buildPlot() {
         .attr("d", lineGenerator1(data))
         .attr("fill","none")
         .attr("stroke", "green")
-
+        
+        
+    const x = d3.axisBottom(xScaler);
+    const y = d3.axisRight(yScaler);
+    
+    bounded.append("g")
+      .attr("transform", `translate(0, ${dimension.boundedHeight})`)
+      .call(x);
+    bounded.append("g")
+      .attr("transform", `translate(0, 0)`)
+      .call(y)
+     
 }
 
 buildPlot();
